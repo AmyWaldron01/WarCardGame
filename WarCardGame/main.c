@@ -54,6 +54,7 @@ void NewGame()
 	int NumPlayers;
 	int cardNum;
 	int cardSuit;
+	int CurrentUser = 0;
 
 
 	printf("\tHow many players are there (2-4): ");
@@ -124,10 +125,12 @@ void NewGame()
 		}
 
 		//Play the game
-		PlayGame(UsersCard, UsersSuit, NumPlayers, KeepScore, 1, Cards_CLICKED);
+		PlayGame(CurrentUser,UsersCard, UsersSuit, NumPlayers, KeepScore, 1, Cards_CLICKED);
 
-		////Redoing for new games
-		////printing out the cards 
+		//Redoing for new games
+		//printing out the cards 
+		//dont need this
+		//put in play game
 		//int suit = " ";
 		//for (int i = 0; i < 14; i++)
 		//{
@@ -145,20 +148,19 @@ void NewGame()
 		////At the end of the round loop
 		//for (int j = 0; j < NumPlayers; j++)
 		//{
-		//	CurrentUser;
+		//	CurrentUser++;
 		//}
 }
 
 
 //playing the game
-void PlayGame(int UsersCard[players][cards], int UsersSuit[players][suits], int NumPlayers, int KeepScore[players], int TheRound, int Cards_Clicked[players][cards])
+void PlayGame(int CurrentUser,int UsersCard[players][cards], int UsersSuit[players][suits], int NumPlayers, int KeepScore[players], int TheRound, int Cards_Clicked[players][cards])
 {
 	//Assign variables
 	int player = 1;
 	int ChosenCard;
 	int numSuits = 13;
 
-	int CurrentUser;
 	int CardPicked;
 	
 	//Scoring
@@ -205,11 +207,22 @@ void PlayGame(int UsersCard[players][cards], int UsersSuit[players][suits], int 
 		suit = UsersSuit[CurrentUser][i];
 
 		switch (suit)
+		{
 			//do this with every suit
-			case 1: suit = "Hearts";
+		case 1: suit = "Hearts";
 			break;
 
-			printf("%d %d of %s", i ,UsersCard[CurrentUser][i],suit);
+		case 2: suit = "Diamonds";
+			break;
+
+		case 3: suit = "Spades";
+			break;
+
+		case 4: suit = "Clubs";
+			break;
+
+			printf("%d %d of %s", i, UsersCard[CurrentUser][i], suit);
+		}//switch
 
 	}
 	
