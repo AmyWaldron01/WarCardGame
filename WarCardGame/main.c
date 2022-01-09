@@ -125,6 +125,28 @@ void NewGame()
 
 		//Play the game
 		PlayGame(UsersCard, UsersSuit, NumPlayers, KeepScore, 1, Cards_CLICKED);
+
+		////Redoing for new games
+		////printing out the cards 
+		//int suit = " ";
+		//for (int i = 0; i < 14; i++)
+		//{
+		//	suit = UsersSuit[CurrentUser][i];
+
+		//	switch (suit)
+		//		//do this with every suit
+		//	case 1: suit = "Hearts";
+		//	break;
+
+		//	printf("%d %d of %s", i, UsersCard[CurrentUser][i], suit);
+
+		//}
+
+		////At the end of the round loop
+		//for (int j = 0; j < NumPlayers; j++)
+		//{
+		//	CurrentUser;
+		//}
 }
 
 
@@ -134,6 +156,7 @@ void PlayGame(int UsersCard[players][cards], int UsersSuit[players][suits], int 
 	//Assign variables
 	int player = 1;
 	int ChosenCard;
+	int numSuits = 13;
 
 	int CurrentUser;
 	int CardPicked;
@@ -174,26 +197,27 @@ void PlayGame(int UsersCard[players][cards], int UsersSuit[players][suits], int 
 	printf("\n");
 	 
 	//TRYING TO GET THIS TO WORK---------------------------------------
-	////printing out the cards 
-	//int suit = " ";
-	//for (int i = 0; i < 14; i++)
-	//{
-	//	//numSuits = UsersSuit[CurrentUser][i];
+	//printing out the cards 
+	int suit = " ";
+	for (int i = 0; i < 14; i++)
+	{
+		//printf("%d", UsersCard[0][i]);
+		suit = UsersSuit[CurrentUser][i];
 
-	//	switch (suit)
-	//		//do this with every suit
-	//		case 1: suit = "Hearts";
-	//		break;
+		switch (suit)
+			//do this with every suit
+			case 1: suit = "Hearts";
+			break;
 
-	//		printf("%d %d of %s", i ,UsersCard[CurrentUser][i]);
+			printf("%d %d of %s", i ,UsersCard[CurrentUser][i],suit);
 
-	//}
-	//
-	////At the end of the round loop
-	//for (int j = 0; j < NumPlayers; j++) 
-	//{
-	//	CurrentUser;
-	//}
+	}
+	
+	//At the end of the round loop
+	for (int j = 0; j < NumPlayers; j++)
+	{
+		CurrentUser;
+	}
 
 	////Update Player Counter
 	//player++;
@@ -206,7 +230,7 @@ void PlayGame(int UsersCard[players][cards], int UsersSuit[players][suits], int 
 	//Open menu to decide what to do 
 
 
-}//end of play game
+} //end of play game
 
 //the menu options
 void Menu()
