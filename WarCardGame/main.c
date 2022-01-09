@@ -154,7 +154,7 @@ void NewGame()
 
 
 //playing the game
-void PlayGame(int CurrentUser,int UsersCard[players][cards], int UsersSuit[players][suits], int NumPlayers, int KeepScore[players], int TheRound, int Cards_Clicked[players][cards])
+void PlayGame(int CurrentUser, int UsersCard[players][cards], int UsersSuit[players][suits], int NumPlayers, int KeepScore[players], int TheRound, int Cards_Clicked[players][cards])
 {
 	//Assign variables
 	int player = 1;
@@ -162,85 +162,328 @@ void PlayGame(int CurrentUser,int UsersCard[players][cards], int UsersSuit[playe
 	int numSuits = 13;
 
 	int CardPicked;
-	
+
 	//Scoring
 	int Score = 0;
-	int Winner = 0; 
+	int Winner = 0;
 	int WiningCard = 0;
-	
+
 	//Users picked 
-	int playerSelectedCard[4][4];
-	int playerSelectedSuit[4][4];
-	char exit = 'X', round = 'X';////
+	int UserSelectedCard[4][4];
+	int UserSelectedSuit[4][4];
+	char exit = 'E', round = 'R';////
+
+	do {
+
+		do {
+			//There is 13 rounds
+			printf("\nRound %d", TheRound);
+
+			//Player __ cards
+			printf("\nPlayer %d's Cards \n", player);
+
+			//TRYING TO GET THIS TO WORK---------------------------------------
+			//printing out the cards 
+			int suit = 0;
+			for (int i = 1; i < 14; i++)
+			{
+				//printf("%d", UsersCard[0][i]);
+				suit = UsersSuit[CurrentUser][i];
+
+				switch (suit)
+				{
+					//do this with every suit
+				case 1: printf("\n%d. %d of Hearts", i, UsersCard[CurrentUser][i]);
+					break;
+
+				case 2: printf("\n%d. %d of Diamonds", i, UsersCard[CurrentUser][i]);
+					break;
+
+				case 3: printf("\n%d. %d of Spades", i, UsersCard[CurrentUser][i]);
+					break;
+
+				case 4: printf("\n%d. %d of Clubs", i, UsersCard[CurrentUser][i]);
+					break;
 
 
-	//There is 13 rounds
-	printf("\nRound %d", TheRound);
+				}//switch
 
-	//Player __ cards
-	printf("\nPlayer %d's Cards \n", player);
+			}
 
-	//options of cards in numbers
-	for (int i = 0; i < 14; i++)
-	{
-		if (i < 9)
-		{
-			printf("    %d:   ", (i + 1));
-		}
-		//doesnt align correctly unless u do this
-		else
-		{
-			printf("   %d:   ", (i + 1));
-		}
-	}
-	printf("\n");
-	 
-	//TRYING TO GET THIS TO WORK---------------------------------------
-	//printing out the cards 
-	int suit = 0;
-	for (int i = 0; i < 14; i++)
-	{
-		//printf("%d", UsersCard[0][i]);
-		suit = UsersSuit[CurrentUser][i];
+			// ask user to pick card
+			printf("\nplease pick a card (or 0 to exit) : ");
+			scanf("%d", &ChosenCard);
 
-		switch (suit)
-		{
-			//do this with every suit
-		case 1: printf("\n%d. %d of Hearts", i, UsersCard[CurrentUser][i]);
-			break;
+			/*if (ChosenCard==0)
+			{
+				printf("GOODBYE");
+			}*/
 
-		case 2: printf("\n%d. %d of Diamonds", i, UsersCard[CurrentUser][i]);
-			break;
+			//IF user trying to play a used card
+			while (UsersCard[CurrentUser][(ChosenCard - 1)] == 1)
+			{
+				printf("\nCard has been used");
 
-		case 3: printf("\n%d. %d of Spades", i, UsersCard[CurrentUser][i]);
-			break;
+				// ask user to pick card
+				printf("\nplease pick a card (or 0 to exit) : ");
+				scanf("%d", &ChosenCard);
+			}
 
-		case 4: printf("\n%d. %d of Clubs", i, UsersCard[CurrentUser][i]);
-			break;
+			//Saving user card
+			switch (ChosenCard)
+			{
+			case 1:
+				//Save Selected Card Details
+				UserSelectedCard[CurrentUser][CurrentUser] = UsersCard[CurrentUser][0];
+				UserSelectedSuit[CurrentUser][CurrentUser] = UsersCard[CurrentUser][0];
 
-			
-		}//switch
+				//card set to played
+				UsersCard[CurrentUser][0] = 0;
+				UsersSuit[CurrentUser][0] = 0;
 
-	}
-	
-	//At the end of the round loop
-	for (int j = 0; j < NumPlayers; j++)
-	{
-		CurrentUser;
-	}
+				break;
 
-	////Update Player Counter
-	//player++;
-//} while (up to 13 rounds)
-	
+			case 2:
+				//Save Selected Card Details
+				UserSelectedCard[CurrentUser][CurrentUser] = UsersCard[CurrentUser][1];
+				UserSelectedSuit[CurrentUser][CurrentUser] = UsersCard[CurrentUser][1];
+
+				//card set to played
+				UsersCard[CurrentUser][1] = 0;
+				UsersSuit[CurrentUser][1] = 0;
+
+				break;
+
+			case 3:
+				//Save Selected Card Details
+				UserSelectedCard[CurrentUser][CurrentUser] = UsersCard[CurrentUser][2];
+				UserSelectedSuit[CurrentUser][CurrentUser] = UsersCard[CurrentUser][2];
+
+				//card set to played
+				UsersCard[CurrentUser][2] = 0;
+				UsersSuit[CurrentUser][2] = 0;
+
+				break;
+
+			case 4:
+				//Save Selected Card Details
+				UserSelectedCard[CurrentUser][CurrentUser] = UsersCard[CurrentUser][3];
+				UserSelectedSuit[CurrentUser][CurrentUser] = UsersCard[CurrentUser][3];
+
+				//card set to played
+				UsersCard[CurrentUser][3] = 0;
+				UsersSuit[CurrentUser][3] = 0;
+
+				break;
+
+			case 5:
+				//Save Selected Card Details
+				UserSelectedCard[CurrentUser][CurrentUser] = UsersCard[CurrentUser][4];
+				UserSelectedSuit[CurrentUser][CurrentUser] = UsersCard[CurrentUser][4];
+
+				//card set to played
+				UsersCard[CurrentUser][4] = 0;
+				UsersSuit[CurrentUser][4] = 0;
+
+				break;
+
+			case 6:
+				//Save Selected Card Details
+				UserSelectedCard[CurrentUser][CurrentUser] = UsersCard[CurrentUser][5];
+				UserSelectedSuit[CurrentUser][CurrentUser] = UsersCard[CurrentUser][5];
+
+				//card set to played
+				UsersCard[CurrentUser][5] = 0;
+				UsersSuit[CurrentUser][5] = 0;
+
+				break;
+
+			case 7:
+				//Save Selected Card Details
+				UserSelectedCard[CurrentUser][CurrentUser] = UsersCard[CurrentUser][6];
+				UserSelectedSuit[CurrentUser][CurrentUser] = UsersCard[CurrentUser][6];
+
+				//card set to played
+				UsersCard[CurrentUser][6] = 0;
+				UsersSuit[CurrentUser][6] = 0;
+
+				break;
+
+			case 8:
+				//Save Selected Card Details
+				UserSelectedCard[CurrentUser][CurrentUser] = UsersCard[CurrentUser][7];
+				UserSelectedSuit[CurrentUser][CurrentUser] = UsersCard[CurrentUser][7];
+
+				//card set to played
+				UsersCard[CurrentUser][7] = 0;
+				UsersSuit[CurrentUser][7] = 0;
+
+				break;
+
+			case 9:
+				//Save Selected Card Details
+				UserSelectedCard[CurrentUser][CurrentUser] = UsersCard[CurrentUser][8];
+				UserSelectedSuit[CurrentUser][CurrentUser] = UsersCard[CurrentUser][8];
+
+				//card set to played
+				UsersCard[CurrentUser][8] = 0;
+				UsersSuit[CurrentUser][8] = 0;
+
+				break;
+
+			case 10:
+				//Save Selected Card Details
+				UserSelectedCard[CurrentUser][CurrentUser] = UsersCard[CurrentUser][9];
+				UserSelectedSuit[CurrentUser][CurrentUser] = UsersCard[CurrentUser][9];
+
+				//card set to played
+				UsersCard[CurrentUser][9] = 0;
+				UsersSuit[CurrentUser][9] = 0;
+
+				break;
+
+			case 11:
+				//Save Selected Card Details
+				UserSelectedCard[CurrentUser][CurrentUser] = UsersCard[CurrentUser][10];
+				UserSelectedSuit[CurrentUser][CurrentUser] = UsersCard[CurrentUser][10];
+
+				//card set to played
+				UsersCard[CurrentUser][10] = 0;
+				UsersSuit[CurrentUser][10] = 0;
+
+				break;
+
+			case 12:
+				//Save Selected Card Details
+				UserSelectedCard[CurrentUser][CurrentUser] = UsersCard[CurrentUser][11];
+				UserSelectedSuit[CurrentUser][CurrentUser] = UsersCard[CurrentUser][11];
+
+				//card set to played
+				UsersCard[CurrentUser][11] = 0;
+				UsersSuit[CurrentUser][11] = 0;
+
+				break;
+
+			case 13:
+				//Save Selected Card Details
+				UserSelectedCard[CurrentUser][CurrentUser] = UsersCard[CurrentUser][12];
+				UserSelectedSuit[CurrentUser][CurrentUser] = UsersCard[CurrentUser][12];
+
+				//card set to played
+				UsersCard[CurrentUser][12] = 0;
+				UsersSuit[CurrentUser][12] = 0;
+
+				break;
+			}//end of switch
+
+			//saving the choice to varible ----------------------------------------------
+			ChosenCard = UserSelectedCard[CurrentUser][CurrentUser];
+
+			//Set point decide by Card Choice
+			switch (ChosenCard)
+			{
+			case 1:
+				Score += 14;
+				break;
+
+			case 2:
+				Score += 2;
+				break;
+
+			case 3:
+				Score += 3;
+				break;
+
+			case 4:
+				Score += 4;
+				break;
+
+			case 5:
+				Score += 5;
+				break;
+
+			case 6:
+				Score += 6;
+				break;
+
+			case 7:
+				Score += 7;
+				break;
+
+			case 8:
+				Score += 8;
+				break;
+
+			case 9:
+				Score += 9;
+				break;
+
+			case 10:
+				Score += 10;
+				break;
+
+			case 11:
+				Score += 11;
+				break;
+
+			case 12:
+				Score += 12;
+				break;
+
+			case 13:
+				Score += 13;
+				break;
+			}
+
+			//when minus number is entered
+			if (ChosenCard == 0)
+			{
+				//exit round
+				round = 'R';
+
+				//exit - ente menu
+				exit = 'E';
 
 
-//} while (exit !=)
+			}
 
-	//Open menu to decide what to do 
+			//OVER PLAYEr COUNT
+			if (player > NumPlayers)
+			{
+				//RESETING
+				player = 0;
+
+				//EXIT LOOP
+				round = 'R';
+			}
+			//updates players  
+			player++;
+
+		} while (round != 'R');
 
 
-} //end of play game
+	}while (exit!="E");
+
+
+			//	//At the end of the round loop
+		//for (int j = 0; j < NumPlayers; j++)
+		//{
+		//	CurrentUser;
+		//}
+
+		////Update Player Counter
+		//player++;
+	//} while (up to 13 rounds)
+
+
+
+	//} while (exit !=)
+
+		//Open menu to decide what to do 
+
+
+	} //end of play game
+
 
 //the menu options
 void Menu()
