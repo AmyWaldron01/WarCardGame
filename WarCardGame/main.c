@@ -172,10 +172,33 @@ void PlayGame(int UsersCard[players][cards], int UsersSuit[players][suits], int 
 		}
 	}
 	printf("\n");
+	 
+	//printing out the cards 
+	int suit = " ";
+	for (int i = 0; i < 14; i++)
+	{
+		//numSuits = UsersSuit[CurrentUser][i];
+
+		switch (suit)
+
+			case 1: suit = "Hearts";
+			break;
+
+			printf("%d %d of %s", i ,UsersCard[CurrentUser][i]);
+
+	}
+	
+	//At the end of the round loop
+	for (int j = 0; j < NumPlayers; j++) 
+	{
+		CurrentUser;
+	}
 
 	////Update Player Counter
 	//player++;
-//} while (round)
+//} while (up to 13 rounds)
+	
+
 
 //} while (exit !=)
 
