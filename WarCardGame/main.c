@@ -177,14 +177,11 @@ void PlayGame(int CurrentUser,int UsersCard[players][cards], int UsersSuit[playe
 	//There is 13 rounds
 	printf("\nRound %d", TheRound);
 
-	//Players
-	CurrentUser = (player - 1);
-
 	//Player __ cards
 	printf("\nPlayer %d's Cards \n", player);
 
 	//options of cards in numbers
-	for (int i = 0; i < 13; i++)
+	for (int i = 0; i < 14; i++)
 	{
 		if (i < 9)
 		{
@@ -200,7 +197,7 @@ void PlayGame(int CurrentUser,int UsersCard[players][cards], int UsersSuit[playe
 	 
 	//TRYING TO GET THIS TO WORK---------------------------------------
 	//printing out the cards 
-	int suit = " ";
+	int suit = 0;
 	for (int i = 0; i < 14; i++)
 	{
 		//printf("%d", UsersCard[0][i]);
@@ -209,19 +206,19 @@ void PlayGame(int CurrentUser,int UsersCard[players][cards], int UsersSuit[playe
 		switch (suit)
 		{
 			//do this with every suit
-		case 1: suit = "Hearts";
+		case 1: printf("\n%d. %d of Hearts", i, UsersCard[CurrentUser][i]);
 			break;
 
-		case 2: suit = "Diamonds";
+		case 2: printf("\n%d. %d of Diamonds", i, UsersCard[CurrentUser][i]);
 			break;
 
-		case 3: suit = "Spades";
+		case 3: printf("\n%d. %d of Spades", i, UsersCard[CurrentUser][i]);
 			break;
 
-		case 4: suit = "Clubs";
+		case 4: printf("\n%d. %d of Clubs", i, UsersCard[CurrentUser][i]);
 			break;
 
-			printf("%d %d of %s", i, UsersCard[CurrentUser][i], suit);
+			
 		}//switch
 
 	}
